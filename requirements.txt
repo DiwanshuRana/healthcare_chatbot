@@ -1,9 +1,5 @@
-flask
-numpy
-nltk
-tensorflow
-flask-cors
-gunicorn
+streamlit
 scikit-learn
+tensorflow-cpu
+numpy
 pandas
-
