@@ -1,0 +1,64 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "hii", "good morning", "how are you", "namaste", "hello doctor", "hi doc"],
+      "responses": ["Hello! How can I help you today?", "Namaste 🙏 How can I assist you?", "Hi! Tell me your health concern 😊"]
+    },
+    {
+      "tag": "fever",
+      "patterns": ["I have fever", "high temperature", "fever since yesterday", "body temperature is high", "feeling hot", "shivering with fever"],
+      "responses": ["Take rest and drink fluids. Consult a doctor if fever persists.", "Monitor your temperature. If it's above 102°F, see a doctor."]
+    },
+    {
+      "tag": "cold",
+      "patterns": ["I have cold", "runny nose", "sneezing a lot", "blocked nose", "common cold", "stuffiness"],
+      "responses": ["Rest and stay hydrated. Steam inhalation may help.", "Common cold usually gets better with rest and fluids."]
+    },
+    {
+      "tag": "cough",
+      "patterns": ["I have cough", "dry cough", "wet cough", "continuous coughing", "sore throat"],
+      "responses": ["Warm salt water gargles and honey can help. If it persists, consult a specialist.", "Drink warm fluids and avoid cold items."]
+    },
+    {
+      "tag": "headache",
+      "patterns": ["I have headache", "head pain", "migraine", "pain in head", "head is aching", "heavy head"],
+      "responses": ["Rest in a quiet room and drink water.", "Headache may be caused by stress or dehydration. Take some rest."]
+    },
+    {
+      "tag": "stomach_pain",
+      "patterns": ["stomach pain", "stomach ache", "gas problem", "pain in abdomen", "loose motion"],
+      "responses": ["Avoid spicy food and drink plenty of water or ORS.", "If the pain is severe or you have persistent vomiting, consult a doctor."]
+    },
+    {
+      "tag": "skin_rash",
+      "patterns": ["skin rash", "itchy skin", "redness on skin", "skin allergy", "pimples"],
+      "responses": ["Keep the area clean. Avoid using harsh soaps. If it spreads, see a dermatologist.", "Skin rashes can be due to allergies. Monitor any new products you used."]
+    },
+    {
+      "tag": "back_pain",
+      "patterns": ["back pain", "lower back ache", "spinal pain", "pain in back", "stiff back"],
+      "responses": ["Maintain a good posture and try light stretching. If pain is severe, see an orthopedic.", "Applying a warm compress may help relax back muscles."]
+    },
+    {
+      "tag": "weakness",
+      "patterns": ["feeling weak", "low energy", "dizziness", "tiredness", "fatigue"],
+      "responses": ["Weakness can be due to poor nutrition or lack of sleep. Eat healthy and rest.", "Drink juice or glucose and see if you feel better. If dizziness persists, consult a doctor."]
+    },
+    {
+      "tag": "eye_infection",
+      "patterns": ["red eyes", "eye pain", "itching in eyes", "watery eyes", "eye infection"],
+      "responses": ["Wash your eyes with clean water. Avoid rubbing them. Consult an eye specialist.", "Rest your eyes from screens. Use lubricating drops if prescribed."]
+    },
+    {
+      "tag": "emergency",
+      "patterns": ["chest pain", "difficulty breathing", "heart attack", "cannot breathe", "severe bleeding", "unconscious"],
+      "responses": ["EMERGENCY: Please call an ambulance (102/108) or go to the nearest hospital immediately!"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "thanks for help", "thank you", "ok bye"],
+      "responses": ["Take care of your health! Bye.", "You're welcome! Feel better soon.", "Goodbye! Consult a doctor for any serious concerns."]
+    }
+  ]
+}

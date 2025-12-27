@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAssist | AI Health Partner</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Medi<span>Assist</span></a>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#services">Features</a>
+            <a href="#">About Us</a>
+        </nav>
+        <a href="tel:108" class="emergency-btn">🆘 Emergency: 108</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Your Smart <span>AI Medical</span> Assistant</h2>
+            <p>Get instant health guidance, symptom analysis, and emergency support. Powered by advanced AI to keep you and your family safe 24/7.</p>
+            <a href="javascript:void(0)" class="btn-main" onclick="$('#chat-circle').click();">Start Consultation</a>
+        </div>
+        <div class="hero-image">
+           <img src="{{ url_for('static', filename='doctor.png') }}" alt="Doctor Illustration">
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <h3>Our AI Services</h3>
+        <div class="services-grid">
+            <div class="card">
+                <span class="icon">🔍</span>
+                <h4>Symptom Checker</h4>
+                <p>Describe your feelings and get instant analysis of possible health conditions.</p>
+            </div>
+            <div class="card">
+                <span class="icon">⚡</span>
+                <h4>Instant Answers</h4>
+                <p>No more searching through endless articles. Get direct answers to your health queries.</p>
+            </div>
+            <div class="card">
+                <span class="icon">🏥</span>
+                <h4>Emergency Help</h4>
+                <p>Get immediate steps to follow during critical medical situations.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h4>MediAssist AI Portal</h4>
+        <p>Providing smart healthcare solutions for a better tomorrow.</p>
+        <hr style="opacity: 0.1; margin: 20px 0;">
+        <p>&copy; 2025 MediAssist AI. All rights reserved. <br> 
+        <small>Disclaimer: AI responses are for informational purposes. Always consult a real doctor.</small></p>
+    </footer>
+
+    <div id="chat-circle">💬</div>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <strong>MediAssist AI Bot</strong>
+            <span id="close-chat" style="cursor:pointer; font-size: 24px;">&times;</span>
+        </div>
+        <div class="chatbox" id="chatbox">
+            <div class="bot">Hello! I'm your AI health assistant. Please describe your symptoms.</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type here..." autocomplete="off">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        // Chat toggle logic
+        $("#chat-circle").click(function() { 
+            $(".chat-container").fadeToggle(200); 
+            $(this).hide();
+            scrollToBottom(); // Open hote hi niche jaye
+        });
+        $("#close-chat").click(function() { 
+            $(".chat-container").fadeOut(200); 
+            $("#chat-circle").fadeIn(200);
+        });
+
+        // Function to scroll to the bottom of the chatbox
+        function scrollToBottom() {
+            var chatbox = document.getElementById("chatbox");
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function send() {
+            var text = $("#userInput").val();
+            if(!text) return;
+
+            // User ka message add karna
+            $("#chatbox").append('<div class="user">' + text + '</div>');
+            $("#userInput").val("");
+            
+            // Scroll niche le jana
+            scrollToBottom();
+
+            // Flask se response lena
+            $.post("/get", {msg: text}, function(data) {
+                // Bot ka message add karna
+                $("#chatbox").append('<div class="bot">' + data.response + '</div>');
+                
+                // Bot ke message ke baad phir se scroll niche le jana
+                scrollToBottom();
+            }).fail(function() {
+                $("#chatbox").append('<div class="bot">Error: Connection lost.</div>');
+                scrollToBottom();
+            });
+        }
+
+        $("#sendBtn").click(send);
+        
+        // Enter key press par send karna
+        $("#userInput").keypress(function(e) { 
+            if(e.which == 13) send(); 
+        });
+    });
+</script>
+</body>
+</html>
